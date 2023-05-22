@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Idea from '../../public/images/idea.png'
 import { useState, useEffect } from 'react'
 import api from '@/lib/axios'
+import NavTopic from '@/components/navTopic'
 
 interface ITopic {
   id: number
@@ -13,6 +14,7 @@ interface ITopic {
 
 export default function Home() {
   const [data, setData] = useState<ITopic[]>([])
+  const [topicInfoId, setTopicInfoId] = useState<number | null>(null)
   const [selectedTopicId, setSelectedTopicId] = useState<number | null>(null)
 
   useEffect(() => {
@@ -21,6 +23,8 @@ export default function Home() {
         const response = await api.get('/')
         const responseData = response.data
         setData(responseData)
+
+        //pegar o id especifico do topico selecionado e armazenar em um estado os dados dele
       } catch (error) {
         console.error(error)
       }
@@ -30,17 +34,22 @@ export default function Home() {
   }, [])
 
   const handleTopicClick = (topicId: number) => {
-    if (selectedTopicId === topicId) {
-      setSelectedTopicId(null)
+    if (topicInfoId === topicId) {
+      setTopicInfoId(null)
     } else {
-      setSelectedTopicId(topicId)
+      setTopicInfoId(topicId)
     }
+  }
+
+  const handleAddTopic = (topicId: number) => {
+    setSelectedTopicId(topicId)
   }
 
   return (
     <div className="min-h-screen flex">
       <Navbar />
-      <main className="w-1/2 ml-[20%] flex flex-col items-center">
+      <NavTopic selectedTopicId={selectedTopicId} />
+      <main className="w-1/2 ml-[25%] flex flex-col items-center relative">
         <div className="w-full h-20">
           <h1>Ola Ewerton</h1>
         </div>
@@ -61,7 +70,12 @@ export default function Home() {
                   />
                 </div>
                 <div className="w-[13%] flex items-center justify-center">
-                  <p className="text-gray-500 font-sans text-2xl">+</p>
+                  <p
+                    className="text-gray-500 font-sans text-2xl cursor-pointer"
+                    onClick={() => handleAddTopic(topic.id)}
+                  >
+                    +
+                  </p>
                 </div>
                 <div
                   className="w-[67%] flex items-center text-blue-600 font-sans cursor-pointer"
@@ -73,7 +87,7 @@ export default function Home() {
                   <p>12/05/2023</p>
                 </div>
               </div>
-              {selectedTopicId === topic.id && (
+              {topicInfoId === topic.id && (
                 <div className="w-[65%] border-l-4 border-gray-400">
                   <p className="p-5 font-sans">
                     <span className="text-blue-800">(22)</span> Sub-tarefas
