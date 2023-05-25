@@ -1,13 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import Home from '../../../public/images/home.png'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import TopicsImg from '../../../public/images/topicIcon.png'
 import Profile from '../../../public/images/profileIcon.png'
 import Book from '../../../public/images/book.png'
 import Brain from '../../../public/images/brain.png'
 import Settings from '../../../public/images/settings.png'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -19,25 +19,25 @@ export default function Navbar() {
       </div>
       <div className="w-full flex-1 bg-white flex flex-col">
         <Link
-          href="/"
+          href="/topics"
           className={'h-14 flex justify-between items-center cursor-pointer'}
         >
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
             <Image
-              src={Home}
+              src={TopicsImg}
               width={300}
               height={300}
-              alt="Home"
+              alt="topics"
               className="w-2/3 h-2/3"
             />
           </div>
           <div className="flex-1 flex items-center">
             <p
               className={`flex-1 ${
-                pathname === '/' ? 'text-black' : 'text-zinc-600'
+                pathname === '/topics' ? 'text-black' : 'text-zinc-600'
               } font-sans`}
             >
-              Inicio
+              Topicos
             </p>
           </div>
         </Link>
