@@ -1,16 +1,20 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import { ITopic } from '../page'
+import api from '@/lib/axios'
 import NavTopic from '@/components/navTopic'
 import Navbar from '@/components/navbar'
 import TopicCard from '@/components/topicCard'
-import api from '@/lib/axios'
 
 export default function Page() {
   const [data, setData] = useState<ITopic[]>([])
-  const [selectedTopicId, setSelectedTopicId] = useState<number | null>(null)
+
+  const pathname = usePathname()
+  const id = pathname.split('/').pop()
+
+  const [selectedTopicId, setSelectedTopicId] = useState<number | null>(id)
 
   const path = usePathname()
   const router = useRouter()
@@ -38,10 +42,7 @@ export default function Page() {
     <div className="min-h-screen flex">
       <Navbar />
       <NavTopic selectedTopicId={selectedTopicId} />
-      <main className="w-1/2 ml-[25%] flex flex-col items-center relative">
-        <div className="w-full h-20">
-          <h1>Ola Ewerton</h1>
-        </div>
+      <main className="w-1/2 ml-[23%] flex flex-col justify-center items-center">
         {data.map((topic) => (
           <TopicCard
             key={topic.id}

@@ -13,7 +13,7 @@ export default function Navbar() {
   const pathname = usePathname()
 
   return (
-    <nav className="w-1/5 h-screen bg-white fixed flex flex-col justify-between">
+    <nav className="w-1/5 h-screen border-r border-gray-200 border-solid bg-white fixed flex flex-col justify-between">
       <div className="w-full h-20 flex items-center">
         <h1 className="text-black font-mono">ewt</h1>
       </div>

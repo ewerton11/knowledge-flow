@@ -1,6 +1,13 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
 import Navbar from '@/components/navbar'
 
 export default function Page() {
+  const router = useRouter()
+
+  router.push('/topics')
+
   return (
     <div className="min-h-screen flex">
       <Navbar />

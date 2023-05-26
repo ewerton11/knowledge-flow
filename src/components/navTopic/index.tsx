@@ -1,4 +1,4 @@
-import { ITopic } from '@/app/page'
+import { ITopic } from '@/app/topics/page'
 import api from '@/lib/axios'
 import { useEffect, useState } from 'react'
 
@@ -26,13 +26,14 @@ export default function NavTopic({ selectedTopicId }: ISelectedTopicId) {
   }, [selectedTopicId])
 
   return (
-    <div className="w-[5%] h-full border-l fixed left-[20%] flex justify-center items-center">
+    <div className="w-[3%] h-full fixed left-[20%] flex justify-center items-center">
       {data === null ? (
-        <h1 className="[writingMode:vertical-rl] [textOrientation:upright] font-sans text-lg">
+        <h1 className="w-full whitespace-nowrap flex justify-center items-center rotate-90 font-sans text-lg">
           inicio
         </h1>
       ) : (
-        <h1 className="[writingMode:vertical-rl] [textOrientation:upright] font-sans text-lg">
+        <h1 className="w-full whitespace-nowrap flex justify-center items-center rotate-90 font-sans text-lg">
+          {/* [writingMode:vertical-rl] [textOrientation:upright] */}
           {data.title}
         </h1>
       )}
