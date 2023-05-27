@@ -7,6 +7,7 @@ import api from '@/lib/axios'
 import NavTopic from '@/components/navTopic'
 import Navbar from '@/components/navbar'
 import TopicCard from '@/components/topicCard'
+import CreateTopic from '@/components/createTopic'
 
 export default function Page() {
   const [data, setData] = useState<ITopic[]>([])
@@ -43,13 +44,18 @@ export default function Page() {
       <Navbar />
       <NavTopic selectedTopicId={selectedTopicId} />
       <main className="w-1/2 ml-[23%] flex flex-col justify-center items-center">
-        {data.map((topic) => (
-          <TopicCard
-            key={topic.id}
-            topic={topic}
-            handleAddTopic={handleAddTopic}
-          />
-        ))}
+        <CreateTopic />
+        <div className="w-full h-auto min-h-screen">
+          <div className="w-full h-[100%]">
+            {data.map((topic) => (
+              <TopicCard
+                key={topic.id}
+                topic={topic}
+                handleAddTopic={handleAddTopic}
+              />
+            ))}
+          </div>
+        </div>
       </main>
       <div>
         <h1>Categorias de estudos, tipo tecnologia, ingles etc...</h1>

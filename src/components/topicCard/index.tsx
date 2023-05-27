@@ -11,7 +11,7 @@ export default function TopicCard({ topic, handleAddTopic }: ITopicCardProps) {
   return (
     <div
       key={topic.id}
-      className="w-[90%] h-16 mt-10 bg-white relative rounded-2xl border border-gray-300 shadow-sm flex justify-between"
+      className="w-[95%] h-16 mt-10 bg-white relative rounded-2xl border border-gray-300 shadow-sm flex justify-between"
     >
       <div className="w-10 h-10 flex justify-center items-center absolute left-3 -translate-y-1/2">
         <Image
