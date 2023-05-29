@@ -47,12 +47,22 @@ export default function Topics() {
     router.push(`/topics/${topicId}`)
   }
 
+  const refreshTopics = async () => {
+    try {
+      const response = await api.get('/topics')
+      const responseData = response.data
+      setData(responseData)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div className="min-h-screen flex">
       <Navbar />
       <NavTopic selectedTopicId={selectedTopicId} />
       <main className="w-1/2 ml-[23%] border-r border-gray-200 flex flex-col justify-center items-center relative">
-        <CreateTopic />
+        <CreateTopic refreshTopics={refreshTopics} />
         <div className="w-full h-auto min-h-screen">
           <div className="w-full h-[100%]">
             {data.map((topic) => (

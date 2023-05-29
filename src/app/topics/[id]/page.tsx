@@ -13,7 +13,7 @@ export default function Page() {
   const [data, setData] = useState<ITopic[]>([])
 
   const pathname = usePathname()
-  const id = pathname.split('/').pop()
+  const id = parseInt(pathname.split('/').pop() || '', 10)
 
   const [selectedTopicId, setSelectedTopicId] = useState<number | null>(id)
 
@@ -39,12 +39,26 @@ export default function Page() {
     router.push(`/topics/${topicId}`)
   }
 
+  const refreshTopics = async () => {
+    try {
+      const response = await api.get(`${path}/child`)
+      const responseData = response.data
+      setData(responseData)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div className="min-h-screen flex">
       <Navbar />
       <NavTopic selectedTopicId={selectedTopicId} />
       <main className="w-1/2 ml-[23%] flex flex-col justify-center items-center">
-        <CreateTopic />
+        <CreateTopic
+          refreshTopics={refreshTopics}
+          isChildTopic={true}
+          parentId={selectedTopicId}
+        />
         <div className="w-full h-auto min-h-screen">
           <div className="w-full h-[100%]">
             {data.map((topic) => (
