@@ -3,11 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import TopicsImg from '../../../public/images/topicIcon.png'
-import Profile from '../../../public/images/profileIcon.png'
-import Book from '../../../public/images/book.png'
-import Brain from '../../../public/images/brain.png'
-import Settings from '../../../public/images/settings.png'
+// import TopicsImg from '../../../public/images/topicIcon.png'
+// import Profile from '../../../public/images/profileIcon.png'
+// import Book from '../../../public/images/book.png'
+// import Brain from '../../../public/images/brain.png'
+// import Settings from '../../../public/images/settings.png'
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -24,7 +24,7 @@ export default function Navbar() {
         >
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
             <Image
-              src={TopicsImg}
+              src="/images/books-icon.svg"
               width={300}
               height={300}
               alt="topics"
@@ -46,13 +46,13 @@ export default function Navbar() {
           className={'h-14 flex justify-between items-center cursor-pointer'}
         >
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
-            <Image
+            {/* <Image
               src={Profile}
               width={300}
               height={300}
               alt="Profile"
               className="w-2/3 h-2/3"
-            />
+            /> */}
           </div>
           <div className="flex-1 flex items-center">
             <p
@@ -69,13 +69,13 @@ export default function Navbar() {
           className="h-14 flex items-center cursor-pointer"
         >
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
-            <Image
+            {/* <Image
               src={Brain}
               width={300}
               height={300}
               alt="Studying"
               className="w-2/3 h-2/3"
-            />
+            /> */}
           </div>
           <div className="flex-1 flex items-center">
             <p
@@ -89,13 +89,13 @@ export default function Navbar() {
         </Link>
         <Link href="/toStudy" className="h-14 flex items-center cursor-pointer">
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
-            <Image
+            {/* <Image
               src={Book}
               width={300}
               height={300}
               alt="To Study"
               className="w-2/3 h-2/3"
-            />
+            /> */}
           </div>
           <div className="flex-1 flex items-center">
             <p
@@ -112,13 +112,13 @@ export default function Navbar() {
           className="h-14 flex items-center cursor-pointer"
         >
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
-            <Image
+            {/* <Image
               src={Settings}
               width={300}
               height={300}
               alt="Picture of the author"
               className="w-2/3 h-2/3"
-            />
+            /> */}
           </div>
           <div className="flex-1 flex items-center">
             <p
@@ -135,7 +135,7 @@ export default function Navbar() {
         href="/newproject"
         className="h-20 bg-white flex justify-center items-center"
       >
-        <button className="w-9/12 h-1/2 bg-blue-800 rounded-3xl flex justify-center items-center relative">
+        <button className="w-9/12 h-1/2 bg-blue-700 hover:bg-blue-600 transition rounded-3xl flex justify-center items-center relative font-medium">
           <div className="w-1/5 absolute left-0">
             <p className="text-white text-1xl">+</p>
           </div>

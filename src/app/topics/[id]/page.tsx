@@ -9,7 +9,7 @@ import Navbar from '@/components/navbar'
 import TopicCard from '@/components/topicCard'
 import CreateTopic from '@/components/createTopic'
 
-export default function Page() {
+export default function ChildTopic() {
   const [data, setData] = useState<ITopic[]>([])
 
   const pathname = usePathname()

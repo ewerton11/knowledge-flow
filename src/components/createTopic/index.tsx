@@ -40,26 +40,27 @@ export default function CreateTopic({
     setInputTopic(event.target.value)
   }
 
+  //Componete ok
   return (
     <form
-      className="w-full h-40 sticky top-0 bg-white flex flex-col justify-center items-center z-10"
+      className="w-full h-32 sticky top-0 bg-white flex flex-col justify-center items-center z-10"
       onSubmit={handleCreateTopic}
     >
-      <div className="w-full h-1/2 flex justify-center items-center">
+      <div className="w-full h-[70%] flex justify-center items-center">
         <input
+          className="w-[90%] h-[70%] text-lg"
           type="text"
-          placeholder="Próximo tópico para aprender"
-          className="w-[90%] h-[70%]"
+          placeholder="Tópico para aprender"
           value={inputTopic}
           onChange={handleInputChange}
         />
       </div>
       <div className="w-full h-[30%] border-y border-gray-200 flex justify-end items-center">
         <button
-          className="w-24 h-3/5 bg-blue-400 mr-[5%] rounded-2xl"
+          className="w-24 h-4/5 bg-blue-700 hover:bg-blue-600 transition mr-[5%] rounded-2xl text-white font-medium"
           type="submit"
         >
-          botão
+          Criar
         </button>
       </div>
     </form>

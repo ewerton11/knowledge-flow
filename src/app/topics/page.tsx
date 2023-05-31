@@ -12,6 +12,8 @@ export interface ITopic {
   id: number
   title: string
   parentId: null | number
+  createdAt: string
+  isChecked: boolean
 }
 
 export default function Topics() {
