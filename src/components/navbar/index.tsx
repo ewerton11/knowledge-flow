@@ -3,11 +3,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-// import TopicsImg from '../../../public/images/topicIcon.png'
-// import Profile from '../../../public/images/profileIcon.png'
-// import Book from '../../../public/images/book.png'
-// import Brain from '../../../public/images/brain.png'
-// import Settings from '../../../public/images/settings.png'
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -27,7 +22,7 @@ export default function Navbar() {
               src="/images/books-icon.svg"
               width={300}
               height={300}
-              alt="topics"
+              alt="books icon"
               className="w-2/3 h-2/3"
             />
           </div>
@@ -46,13 +41,13 @@ export default function Navbar() {
           className={'h-14 flex justify-between items-center cursor-pointer'}
         >
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
-            {/* <Image
-              src={Profile}
+            <Image
+              src="/images/male-icon.svg"
               width={300}
               height={300}
-              alt="Profile"
+              alt="male icon"
               className="w-2/3 h-2/3"
-            /> */}
+            />
           </div>
           <div className="flex-1 flex items-center">
             <p
@@ -69,13 +64,13 @@ export default function Navbar() {
           className="h-14 flex items-center cursor-pointer"
         >
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
-            {/* <Image
-              src={Brain}
+            <Image
+              src="/images/open-book-icon.svg"
               width={300}
               height={300}
-              alt="Studying"
+              alt="open book icon"
               className="w-2/3 h-2/3"
-            /> */}
+            />
           </div>
           <div className="flex-1 flex items-center">
             <p
@@ -89,13 +84,13 @@ export default function Navbar() {
         </Link>
         <Link href="/toStudy" className="h-14 flex items-center cursor-pointer">
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
-            {/* <Image
-              src={Book}
+            <Image
+              src="/images/creative-thinking-icon.svg"
               width={300}
               height={300}
-              alt="To Study"
+              alt="creative thinking icon"
               className="w-2/3 h-2/3"
-            /> */}
+            />
           </div>
           <div className="flex-1 flex items-center">
             <p
@@ -112,13 +107,13 @@ export default function Navbar() {
           className="h-14 flex items-center cursor-pointer"
         >
           <div className="w-10 h-10 ml-5 flex justify-center items-center">
-            {/* <Image
-              src={Settings}
+            <Image
+              src="/images/setting-icon.svg"
               width={300}
               height={300}
-              alt="Picture of the author"
+              alt="setting icon"
               className="w-2/3 h-2/3"
-            /> */}
+            />
           </div>
           <div className="flex-1 flex items-center">
             <p
