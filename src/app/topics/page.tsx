@@ -65,8 +65,8 @@ export default function Topics() {
       <NavTopic selectedTopicId={selectedTopicId} />
       <main className="w-1/2 ml-[23%] border-r border-gray-200 flex flex-col justify-center items-center relative">
         <CreateTopic refreshTopics={refreshTopics} />
-        <div className="w-full h-auto min-h-screen">
-          <div className="w-full h-[100%]">
+        <div className="w-full h-auto flex-1">
+          <div className="w-full h-auto">
             {data.map((topic) => (
               <TopicCard
                 key={topic.id}
