@@ -6,9 +6,14 @@ import Idea from '../../../public/images/idea.png'
 interface ITopicCardProps {
   topic: ITopic
   handleAddTopic: (id: number) => void
+  handleDeleteTopic: (id: number) => void
 }
 
-export default function TopicCard({ topic, handleAddTopic }: ITopicCardProps) {
+export default function TopicCard({
+  topic,
+  handleAddTopic,
+  handleDeleteTopic,
+}: ITopicCardProps) {
   const [isConfigVisible, setIsConfigVisible] = useState(false)
 
   const createdAtDate = new Date(topic.createdAt)
@@ -16,6 +21,10 @@ export default function TopicCard({ topic, handleAddTopic }: ITopicCardProps) {
 
   const toggleConfigVisibility = () => {
     setIsConfigVisible(!isConfigVisible)
+  }
+
+  const deleteTopic = () => {
+    handleDeleteTopic(topic.id)
   }
 
   return (
@@ -93,13 +102,13 @@ export default function TopicCard({ topic, handleAddTopic }: ITopicCardProps) {
             </div>
             <div
               className="w-4 h-4 ml-5 flex justify-center items-center text-gray-500 font-sans text-2xl cursor-pointer"
-              // onClick={() => handleAddTopic(topic.id)}
+              onClick={deleteTopic}
             >
               <Image
                 src="/images/recycle-bin-icon.svg"
                 width={300}
                 height={300}
-                alt="Arrow to show more options"
+                alt="delete topic"
                 className="w-full"
               />
             </div>

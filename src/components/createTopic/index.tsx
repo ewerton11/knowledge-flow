@@ -27,8 +27,6 @@ export default function CreateTopic({
 
       await api.post(url, data)
 
-      console.log(url, 'url', data, 'data', isChildTopic, 'isChildenTopic')
-
       setInputTopic('')
       refreshTopics()
     } catch (error) {

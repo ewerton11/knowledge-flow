@@ -21,25 +21,10 @@ export default function ChildTopic() {
   const router = useRouter()
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await api.get(`${path}/child`)
-        const responseData = response.data
-        setData(responseData)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
     fetchData()
   }, [path])
 
-  const handleAddTopic = (topicId: number) => {
-    setSelectedTopicId(topicId)
-    router.push(`/topics/${topicId}`)
-  }
-
-  const refreshTopics = async () => {
+  const fetchData = async () => {
     try {
       const response = await api.get(`${path}/child`)
       const responseData = response.data
@@ -49,13 +34,37 @@ export default function ChildTopic() {
     }
   }
 
+  const handleAddTopic = (topicId: number) => {
+    setSelectedTopicId(topicId)
+    router.push(`/topics/${topicId}`)
+  }
+
+  const handleDeleteTopic = async (topicId: number) => {
+    try {
+      await api.delete(`/topics/${topicId}`)
+      await fetchData()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  // const refreshTopics = async () => {
+  //   try {
+  //     const response = await api.get(`${path}/child`)
+  //     const responseData = response.data
+  //     setData(responseData)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+
   return (
     <div className="min-h-screen flex">
       <Navbar />
       <NavTopic selectedTopicId={selectedTopicId} />
       <main className="w-1/2 ml-[23%] flex flex-col justify-center items-center">
         <CreateTopic
-          refreshTopics={refreshTopics}
+          refreshTopics={fetchData}
           isChildTopic={true}
           parentId={selectedTopicId}
         />
@@ -66,6 +75,7 @@ export default function ChildTopic() {
                 key={topic.id}
                 topic={topic}
                 handleAddTopic={handleAddTopic}
+                handleDeleteTopic={handleDeleteTopic}
               />
             ))}
           </div>

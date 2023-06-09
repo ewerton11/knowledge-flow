@@ -22,20 +22,6 @@ export default function Topics() {
 
   const router = useRouter()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await api.get('/topics')
-        const responseData = response.data
-        setData(responseData)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    fetchData()
-  }, [])
-
   // const handleTopicClick = (topicId: number) => {
   //   if (topicInfoId === topicId) {
   //     setTopicInfoId(null)
@@ -44,16 +30,29 @@ export default function Topics() {
   //   }
   // }
 
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    try {
+      const response = await api.get('/topics')
+      const responseData = response.data
+      setData(responseData)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const handleAddTopic = (topicId: number) => {
     setSelectedTopicId(topicId)
     router.push(`/topics/${topicId}`)
   }
 
-  const refreshTopics = async () => {
+  const handleDeleteTopic = async (topicId: number) => {
     try {
-      const response = await api.get('/topics')
-      const responseData = response.data
-      setData(responseData)
+      await api.delete(`/topics/${topicId}`)
+      await fetchData()
     } catch (error) {
       console.error(error)
     }
@@ -64,7 +63,7 @@ export default function Topics() {
       <Navbar />
       <NavTopic selectedTopicId={selectedTopicId} />
       <main className="w-1/2 ml-[23%] border-r border-gray-200 flex flex-col justify-center items-center relative">
-        <CreateTopic refreshTopics={refreshTopics} />
+        <CreateTopic refreshTopics={fetchData} />
         <div className="w-full h-auto flex-1">
           <div className="w-full h-auto">
             {data.map((topic) => (
@@ -72,6 +71,7 @@ export default function Topics() {
                 key={topic.id}
                 topic={topic}
                 handleAddTopic={handleAddTopic}
+                handleDeleteTopic={handleDeleteTopic}
               />
             ))}
           </div>
