@@ -6,21 +6,29 @@ import Idea from '../../../public/images/idea.png'
 interface ITopicCardProps {
   topic: ITopic
   handleAddTopic: (id: number) => void
+  handleUpdateTopic: (id: number, newTitle: string) => void
   handleDeleteTopic: (id: number) => void
 }
 
 export default function TopicCard({
   topic,
   handleAddTopic,
+  handleUpdateTopic,
   handleDeleteTopic,
 }: ITopicCardProps) {
   const [isConfigVisible, setIsConfigVisible] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
+  const [newTitle, setNewTitle] = useState(topic.title)
 
   const createdAtDate = new Date(topic.createdAt)
   const formattedDate = createdAtDate.toLocaleDateString()
 
   const toggleConfigVisibility = () => {
     setIsConfigVisible(!isConfigVisible)
+  }
+
+  const updateTopic = () => {
+    handleUpdateTopic(topic.id, newTitle)
   }
 
   const deleteTopic = () => {
@@ -63,12 +71,19 @@ export default function TopicCard({
             />
           </div>
         </div>
-        <div
-          className="w-[67%] flex items-center text-blue-600 font-sans cursor-pointer"
-          // onClick={() => handleTopicClick(topic.id)}
-        >
-          <p>{topic.title}</p>
-        </div>
+        {isEditing ? (
+          <div className="w-[67%] flex items-center text-blue-600 font-sans cursor-pointer">
+            <input
+              type="text"
+              value={newTitle}
+              onChange={(e) => setNewTitle(e.target.value)}
+            />
+          </div>
+        ) : (
+          <div className="w-[67%] flex items-center text-blue-600 font-sans cursor-pointer">
+            <p>{topic.title}</p>
+          </div>
+        )}
         <div className="w-1/5 flex items-center text-gray-500 font-sans">
           <p>{formattedDate}</p>
         </div>
@@ -90,7 +105,10 @@ export default function TopicCard({
             </div>
             <div
               className="w-4 h-4  ml-5 flex justify-center items-center text-gray-500 font-sans text-2xl cursor-pointer"
-              // onClick={() => handleAddTopic(topic.id)}
+              onClick={() => {
+                setIsEditing(!isEditing)
+                updateTopic()
+              }}
             >
               <Image
                 src="/images/pencil-icon.svg"

@@ -39,6 +39,17 @@ export default function ChildTopic() {
     router.push(`/topics/${topicId}`)
   }
 
+  const handleUpdateTopic = async (topicId: number, newTitle: string) => {
+    try {
+      await api.put(`/topics/${topicId}`, {
+        title: newTitle,
+      })
+      await fetchData()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const handleDeleteTopic = async (topicId: number) => {
     try {
       await api.delete(`/topics/${topicId}`)
@@ -75,6 +86,7 @@ export default function ChildTopic() {
                 key={topic.id}
                 topic={topic}
                 handleAddTopic={handleAddTopic}
+                handleUpdateTopic={handleUpdateTopic}
                 handleDeleteTopic={handleDeleteTopic}
               />
             ))}
