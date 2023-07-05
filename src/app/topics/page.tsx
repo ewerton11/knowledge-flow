@@ -69,6 +69,15 @@ export default function Topics() {
     }
   }
 
+  const handleCheckingTopic = async (topicId: number) => {
+    try {
+      await api.put(`/topics/${topicId}/check`)
+      await fetchData()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div className="min-h-screen flex">
       <Navbar />
@@ -84,6 +93,7 @@ export default function Topics() {
                 handleAddTopic={handleAddTopic}
                 handleUpdateTopic={handleUpdateTopic}
                 handleDeleteTopic={handleDeleteTopic}
+                handleCheckingTopic={handleCheckingTopic}
               />
             ))}
           </div>

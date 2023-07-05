@@ -59,6 +59,15 @@ export default function ChildTopic() {
     }
   }
 
+  const handleCheckingTopic = async (topicId: number) => {
+    try {
+      await api.put(`/topics/${topicId}/check`)
+      await fetchData()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   // const refreshTopics = async () => {
   //   try {
   //     const response = await api.get(`${path}/child`)
@@ -88,6 +97,7 @@ export default function ChildTopic() {
                 handleAddTopic={handleAddTopic}
                 handleUpdateTopic={handleUpdateTopic}
                 handleDeleteTopic={handleDeleteTopic}
+                handleCheckingTopic={handleCheckingTopic}
               />
             ))}
           </div>

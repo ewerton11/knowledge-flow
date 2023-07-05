@@ -8,6 +8,7 @@ interface ITopicCardProps {
   handleAddTopic: (id: number) => void
   handleUpdateTopic: (id: number, newTitle: string) => void
   handleDeleteTopic: (id: number) => void
+  handleCheckingTopic: (id: number) => void
 }
 
 export default function TopicCard({
@@ -15,6 +16,7 @@ export default function TopicCard({
   handleAddTopic,
   handleUpdateTopic,
   handleDeleteTopic,
+  handleCheckingTopic,
 }: ITopicCardProps) {
   const [isConfigVisible, setIsConfigVisible] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
@@ -35,6 +37,10 @@ export default function TopicCard({
     handleDeleteTopic(topic.id)
   }
 
+  const checkingTopic = () => {
+    handleCheckingTopic(topic.id)
+  }
+
   return (
     <div
       key={topic.id}
@@ -53,8 +59,11 @@ export default function TopicCard({
           />
         </div>
         <div className="w-[10%] ml-[3%] flex items-center">
-          <div className="w-4 h-4 bg-white border-2 rounded border-gray-500 text-gray-500 flex justify-center items-center cursor-pointer">
-            {topic.isChecked ? '✓' : '✓'}
+          <div
+            className="w-4 h-4 bg-white border-2 rounded border-gray-500 text-gray-500 flex justify-center items-center cursor-pointer"
+            onClick={checkingTopic}
+          >
+            {topic.isChecked ? '✓' : ''}
           </div>
           <div
             className="w-4 h-4  ml-3 flex items-center justify-center cursor-pointer"
