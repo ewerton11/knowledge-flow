@@ -108,8 +108,8 @@ export default function TopicCard({
                 src="/images/plus-icon.svg"
                 width={300}
                 height={300}
-                alt="Arrow to show more options"
-                className="w-full"
+                alt="add sub topic"
+                className="w-[90%] h-[90%]"
               />
             </div>
             <div
@@ -123,8 +123,8 @@ export default function TopicCard({
                 src="/images/pencil-icon.svg"
                 width={300}
                 height={300}
-                alt="Arrow to show more options"
-                className="w-full"
+                alt="edit topic"
+                className="w-[90%] h-[90%]"
               />
             </div>
             <div
@@ -136,7 +136,7 @@ export default function TopicCard({
                 width={300}
                 height={300}
                 alt="delete topic"
-                className="w-full"
+                className="w-[90%] h-[90%]"
               />
             </div>
           </div>

@@ -23,7 +23,7 @@ export default function Navbar() {
               width={300}
               height={300}
               alt="books icon"
-              className="w-2/3 h-2/3"
+              className="w-1/2 h-1/2 text-yellow-500"
             />
           </div>
           <div className="flex-1 flex items-center">
@@ -46,7 +46,7 @@ export default function Navbar() {
               width={300}
               height={300}
               alt="male icon"
-              className="w-2/3 h-2/3"
+              className="w-1/2 h-1/2"
             />
           </div>
           <div className="flex-1 flex items-center">
@@ -69,7 +69,7 @@ export default function Navbar() {
               width={300}
               height={300}
               alt="open book icon"
-              className="w-2/3 h-2/3"
+              className="w-1/2 h-1/2"
             />
           </div>
           <div className="flex-1 flex items-center">
@@ -89,7 +89,7 @@ export default function Navbar() {
               width={300}
               height={300}
               alt="creative thinking icon"
-              className="w-2/3 h-2/3"
+              className="w-1/2 h-1/2"
             />
           </div>
           <div className="flex-1 flex items-center">
@@ -112,7 +112,7 @@ export default function Navbar() {
               width={300}
               height={300}
               alt="setting icon"
-              className="w-2/3 h-2/3"
+              className="w-1/2 h-1/2"
             />
           </div>
           <div className="flex-1 flex items-center">
