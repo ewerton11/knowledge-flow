@@ -9,7 +9,6 @@ interface ICreateTopicProps {
 
 export default function CreateTopic({
   refreshTopics,
-  isChildTopic = false,
   parentId,
 }: ICreateTopicProps) {
   const [inputTopic, setInputTopic] = useState('')
@@ -18,14 +17,9 @@ export default function CreateTopic({
     event.preventDefault()
 
     try {
-      const url = isChildTopic
-        ? '/topics/create/child-topic'
-        : '/topics/create/topic'
-      const data = isChildTopic
-        ? { title: inputTopic, parentId: parentId }
-        : { title: inputTopic }
+      const data = { title: inputTopic, parentId: parentId }
 
-      await api.post(url, data)
+      await api.post('Topic', data)
 
       setInputTopic('')
       refreshTopics()

@@ -13,7 +13,7 @@ export default function NavTopic({ selectedTopicId }: ISelectedTopicId) {
     const fetchData = async () => {
       try {
         if (selectedTopicId !== null) {
-          const response = await api.get(`/topics/${selectedTopicId}`)
+          const response = await api.get(`/Topic/${selectedTopicId}`)
           const responseData = response.data
           setData(responseData)
         }

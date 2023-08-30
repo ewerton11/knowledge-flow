@@ -36,7 +36,7 @@ export default function Topics() {
 
   const fetchData = async () => {
     try {
-      const response = await api.get('/topics')
+      const response = await api.get('/Topic')
       const responseData = response.data
       setData(responseData)
     } catch (error) {
@@ -51,7 +51,7 @@ export default function Topics() {
 
   const handleUpdateTopic = async (topicId: number, newTitle: string) => {
     try {
-      await api.put(`/topics/${topicId}`, {
+      await api.put(`/Topic/${topicId}`, {
         title: newTitle,
       })
       await fetchData()
@@ -62,7 +62,7 @@ export default function Topics() {
 
   const handleDeleteTopic = async (topicId: number) => {
     try {
-      await api.delete(`/topics/${topicId}`)
+      await api.delete(`/Topic/${topicId}`)
       await fetchData()
     } catch (error) {
       console.error(error)
@@ -71,7 +71,7 @@ export default function Topics() {
 
   const handleCheckingTopic = async (topicId: number) => {
     try {
-      await api.put(`/topics/${topicId}/check`)
+      await api.put(`/Topic/${topicId}/check`)
       await fetchData()
     } catch (error) {
       console.error(error)

@@ -26,7 +26,7 @@ export default function ChildTopic() {
 
   const fetchData = async () => {
     try {
-      const response = await api.get(`${path}/child`)
+      const response = await api.get(`/Topic?id=${id}`)
       const responseData = response.data
       setData(responseData)
     } catch (error) {
@@ -41,7 +41,7 @@ export default function ChildTopic() {
 
   const handleUpdateTopic = async (topicId: number, newTitle: string) => {
     try {
-      await api.put(`/topics/${topicId}`, {
+      await api.put(`/Topic/${topicId}`, {
         title: newTitle,
       })
       await fetchData()
@@ -52,7 +52,7 @@ export default function ChildTopic() {
 
   const handleDeleteTopic = async (topicId: number) => {
     try {
-      await api.delete(`/topics/${topicId}`)
+      await api.delete(`/Topic/${topicId}`)
       await fetchData()
     } catch (error) {
       console.error(error)
@@ -82,14 +82,10 @@ export default function ChildTopic() {
     <div className="min-h-screen flex">
       <Navbar />
       <NavTopic selectedTopicId={selectedTopicId} />
-      <main className="w-1/2 ml-[23%] flex flex-col justify-center items-center">
-        <CreateTopic
-          refreshTopics={fetchData}
-          isChildTopic={true}
-          parentId={selectedTopicId}
-        />
-        <div className="w-full h-auto min-h-screen">
-          <div className="w-full h-[100%]">
+      <main className="w-1/2 ml-[23%] border-r border-gray-200 flex flex-col justify-center items-center relative">
+        <CreateTopic refreshTopics={fetchData} parentId={id} />
+        <div className="w-full h-auto flex-1">
+          <div className="w-full h-auto">
             {data.map((topic) => (
               <TopicCard
                 key={topic.id}
