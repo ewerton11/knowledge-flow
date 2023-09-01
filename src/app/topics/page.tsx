@@ -71,7 +71,7 @@ export default function Topics() {
 
   const handleCheckingTopic = async (topicId: number) => {
     try {
-      await api.put(`/Topic/${topicId}/check`)
+      await api.patch(`/Topic/toggle/${topicId}`)
       await fetchData()
     } catch (error) {
       console.error(error)
